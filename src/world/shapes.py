@@ -48,7 +48,7 @@ class Sphere(Shape) :
             c = 0
         else:
             c = 255 - angle * 255/90
-        c  = c/255**2 #* light.intensity/1000
+        c  = (c/255**2) * light.intensity/1000
         #print(c)
         return self.color * c
 
