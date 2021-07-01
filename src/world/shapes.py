@@ -20,15 +20,16 @@ class Sphere(Shape) :
     def pointOfIntersection(self, line:Line):
         l = line
         line = Line(line.origin.add(self.origin.invert()), line.direction)
-        a = line.direction.x**2 + line.direction.y**2 + line.direction.z**2
-        b = 2 * (line.origin.x * line.direction.x + line.origin.y * line.direction.y + line.origin.z * line.direction.z)
-        c = line.origin.x**2 + line.origin.y**2 + line.origin.z**2 - self.radius**2
-        if (b**2 - 4 * a * c < 0):
+        a = line.direction.vec[0]**2 + line.direction.vec[1]**2 + line.direction.vec[2]**2
+        b = 2 * (line.origin.vec[0] * line.direction.vec[0] + line.origin.vec[1] * line.direction.vec[1] + line.origin.vec[2] * line.direction.vec[2])
+        c = line.origin.vec[0]**2 + line.origin.vec[1]**2 + line.origin.vec[2]**2 - self.radius**2
+        #print(a, b, c)
+        if (b**2 < 4 * a * c):
             return None
         t1:float = (-b + math.sqrt(b**2 - 4 * a * c))/ (2*a)
         t2:float = (-b - math.sqrt(b**2 - 4 * a * c))/ (2*a)
-        #print(t1)
-        #print(t2)
+        #print(t1, t2)
+        #exit()
         return (l.insert(t2), l.insert(t1))
 
     def getColorFactor(self, vec:Vector, light:Light):
@@ -43,10 +44,10 @@ class Sphere(Shape) :
         else:
             c = 255 - angle * 255/90
         c /= 255
-        return Vector(light.color[0] * c /255,light.color[1] * c /255, light.color[2] * c /255 )
+        return Vector(light.color[0] * c /255,light.color[1] * c /255, light.color[2] * c /255)
 
     def getColor(self, c:float):
-        return (int(self.color[0] * c.x), int(self.color[1] * c.y), int(self.color[2] * c.z))
+        return (int(self.color[0] * c.vec[0]), int(self.color[1] * c.vec[1]), int(self.color[2] * c.vec[2]))
 
     #Vector
     def isInSphere(self, vec:Vector):

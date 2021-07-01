@@ -7,4 +7,4 @@ class Light:
         self.color = color
 
     def __str__(self):
-        return (f"Light:\n\tx:{self.origin.x}\n\ty:{self.origin.y}\n\tz:{self.origin.z}\n")
+        return (f"Light:\n\tx:{self.origin.vec[0]}\n\ty:{self.origin.vec[1]}\n\tz:{self.origin.vec[2]}\n")

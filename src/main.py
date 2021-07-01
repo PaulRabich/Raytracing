@@ -3,7 +3,7 @@ from world.lights import Light
 from world.model import Model
 from world.shapes import *
 from util.my_math import *
-
+"""
 x = 1000
 y = 800
 s = Sphere(Vector(800, 0, 0), 300, (255, 255, 255))
@@ -26,12 +26,10 @@ p.showPicture()
 p.save()
 
 """
-s = Sphere(Vector(800, 0, 0), 500, (255, 0, 0))
-line = Line(Vector(0, 0, 0), Vector(10, 0, 0))
-p1, p2 = s.pointOfIntersection(line)
-print(p1)
-a = p1.add(Vector(0, 0, 0).invert())
-print(a)
-print(p1.angle(a))
+v = Vector(1, 23, 4)
+v1 = Vector(2, 4, 1)
+print(v.vec + v1.vec)
+print(v)
+print(v1)
 #p.pointOfInersection(l).print()
-"""
+
