@@ -20,6 +20,7 @@ class Triangle:
         self.a = a
         self.b = b - a
         self.c = c - a
+        self.cross = np.cross(self.b, self.c)
 
     def pointOfIntersection(self, line:Line):
         A = np.array([self.b, self.c, -1* line.direction])
