@@ -1,46 +1,7 @@
 import math
 import numpy as np
-"""
-class Vector:
-    #double, double, double
-    def __init__(self, x:float, y:float, z:float): 
-        self.vec = np.array([x, y, z], dtype=np.float64)
+from numpy import linalg as la
 
-    def length(self):
-        return math.sqrt(self.vec[0]**2 + self.vec[1]**2 + self.vec[2]**2)
-    
-    #Vector
-    def add(self, vec):
-       return self.vec + vec.vec
-
-    #double
-    def multiply(self, a:float):
-        return Vector(self.vec[0] * a, self.vec[1] * a, self.vec[2] * a)
-
-    def __str__(self):
-        return(f"Vector:\n\tx:{self.vec[0]}\n\ty:{self.vec[1]}\n\tz:{self.vec[2]}\n")
-
-    def invert(self):
-        return Vector(-self.vec[0], -self.vec[1], -self.vec[2])
-
-    def scalar(self, vec):
-        return (self.vec[0] * vec.vec[0] + self.vec[1] * vec.vec[1] + self.vec[2] * vec.vec[2])
-
-    def angle(self, vec):
-        a = self.scalar(vec) / (self.length() * vec.length())
-        if(a < -1):
-            a = math.pi
-        elif(a > 1):
-            a = 0
-        else:
-            a = math.acos(a)
-        
-        alpha = (180/math.pi) * a
-        return alpha
-
-    def norm(self):
-        return self.vec[0] + self.vec[1] + self.vec[2]
-"""
 class Line:
     def __init__(self, origin:np.array, direction:np.array):
         self.origin:np.array = origin
@@ -52,4 +13,26 @@ class Line:
 
     def __str__(self):
         return(f"Line:\n\tx:{self.origin.vec[0]}\t   x:{self.direction.vec[0]}\n\ty:{self.origin.vec[1]}\ts* y:{self.direction.vec[1]}\n\tz:{self.origin.vec[2]}\t   z:{self.direction.vec[2]}\n")
+
+class Triangle:
+    #a, b, c as Points
+    def __init__(self, a:np.array, b:np.array, c:np.array):
+        self.a = a
+        self.b = b - a
+        self.c = c - a
+
+    def pointOfIntersection(self, line:Line):
+        A = np.array([self.b, self.c, -1* line.direction])
+        if(la.det(A) == 0):
+            return np.array([-np.inf, -np.inf, -np.inf])
+        B = (-1* self.a + line.origin)
+        solution = la.solve(A, B)
+        #print(solution)
+        if(solution[0] == np.inf or solution[1] == np.inf or solution[2] == np.inf):
+            return np.array([-np.inf, -np.inf, -np.inf])
+        elif(solution[0] < 0 or solution[1] < 0 or solution[0] > 1 or solution[1] > 1 or solution[0] + solution[1] > 1):
+            return np.array([-np.inf, -np.inf, -np.inf])
+        else:
+            return line.insert(solution[2])
+        
 
