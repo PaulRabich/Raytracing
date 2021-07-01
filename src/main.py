@@ -3,15 +3,16 @@ from world.lights import Light
 from world.model import Model
 from world.shapes import *
 from util.my_math import *
-"""
+import numpy as np
+from numpy import linalg as la
+
 x = 1000
 y = 800
-s = Sphere(Vector(800, 0, 0), 300, (255, 255, 255))
+s = Sphere(np.array([800, 0, 0]), 300, np.array([255, 255, 255]))
 
 shperes = [s,]
 
-l0 = Light(Vector(300, 350, 250), (255, 0, 255))
-#l1 = Light(Vector(400, -300, -200), (255, 255, 255))
+l0 = Light(np.array([300, 350, 250]), np.array([255, 255, 255]), 1000)
 l = [l0,]
 m = Model(400, shperes, l, x, y)
 r = m.calculatePoints()
@@ -26,10 +27,8 @@ p.showPicture()
 p.save()
 
 """
-v = Vector(1, 23, 4)
-v1 = Vector(2, 4, 1)
-print(v.vec + v1.vec)
-print(v)
-print(v1)
+a = np.array([9, 1, 3])
+n = np.array([np.array([9, 1, 3]), np.array([9, 1, 3])])
+print(n)
 #p.pointOfInersection(l).print()
-
+"""

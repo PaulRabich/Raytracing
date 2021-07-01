@@ -12,8 +12,7 @@ class Picture:
 
     def drawPixel(self, x:int, y:int, color = 0):
         #print(x, y, color)
-        c1, c2, c3 = color
-        color = (int(c1), int(c2), int(c3))
+        color = (int(color[0]), int(color[1]), int(color[2]))
         self.draw.point((int(x), int(y)), fill = color)
 
     def showPicture(self):

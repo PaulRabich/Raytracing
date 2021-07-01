@@ -42,13 +42,13 @@ class Vector:
         return self.vec[0] + self.vec[1] + self.vec[2]
 """
 class Line:
-    def __init__(self, origin:Vector, direction:Vector):
-        self.origin:Vector = origin
-        self.direction:Vector = direction
+    def __init__(self, origin:np.array, direction:np.array):
+        self.origin:np.array = origin
+        self.direction:np.array = direction
 
     #double
     def insert(self, x:float):
-        return self.origin.add(self.direction.multiply(x))
+        return self.origin + (self.direction * x)
 
     def __str__(self):
         return(f"Line:\n\tx:{self.origin.vec[0]}\t   x:{self.direction.vec[0]}\n\ty:{self.origin.vec[1]}\ts* y:{self.direction.vec[1]}\n\tz:{self.origin.vec[2]}\t   z:{self.direction.vec[2]}\n")
