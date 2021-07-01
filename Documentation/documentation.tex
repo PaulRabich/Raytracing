@@ -1,0 +1,41 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{setspace}
+\begin{document}
+\section*{Kugel - Gerade}
+
+Kugel: $k = \left(\begin{array}{c} k_1 \\ k_2 \\ k_3 \end{array}\right)$ \newline
+Gerade: $g = \left(\begin{array}{c} v_1 \\ v_2 \\ v_3 \end{array}\right) + s*
+\left(\begin{array}{c} t_1 \\ t_2 \\ t_3 \end{array}\right)$\newline\newline
+\begin{doublespace}
+$x^2 + y^2 + z^2 = r^2$\newline
+$(v_1 + t_1s)^2 + (v_2 + t_2s)^2 + (v_3 + t_3s)^2 = r^2$\newline
+$v_1^2 + 2v_1t_1s + (t_1s)^2 + v_2^2 + 2v_2t_2s + (t_2s)^2 + v_3^2 + 2v_3t_3s + (t_3s)^2 = r^2$\newline
+$A:=(t_1^2 + t_2^2 + t_3^2)$\newline
+$C:=(v_1^2 + v_2^2 + v_3^2 - r^2)$\newline
+$2v_1t_1s  + 2v_2t_2s + 2v_3t_3s + A*s^2 + C = 0$\newline
+$B:= 2*(v_1t_1s  + v_2t_2s + v_3t_3s)$\newline
+$As^2 + Bs + C = 0$\newline
+$s_{1/2} =$ {\Large$\frac{-B \pm \sqrt{B^2 - 4AC}}{2A}$}
+\end{doublespace}
+
+\section*{Ebene - Gerade}
+Ebene: $e = \left[\left(\begin{array}{c} x_1 \\ x_2 \\ x_3 \end{array}\right) - \left(\begin{array}{c} o_1 \\ o_2 \\ o_3 \end{array}\right)\right] * \left(\begin{array}{c} n_1 \\ n_2 \\ n_3 \end{array}\right) = 0$\newline
+$\Leftrightarrow  \left(\begin{array}{c} x_1 \\ x_2 \\ x_3 \end{array}\right) * \left(\begin{array}{c} n_1 \\ n_2 \\ n_3 \end{array}\right) = \left(\begin{array}{c} o_1 \\ o_2 \\ o_3 \end{array}\right)* \left(\begin{array}{c} n_1 \\ n_2 \\ n_3 \end{array}\right)$\newline
+$\Leftrightarrow x_1n_1 + x_2n_2 + x_3n_3 = o_1n_1 + o_2n_2 + o_3n_3$\newline
+Gerade: $g = \left(\begin{array}{c} v_1 \\ v_2 \\ v_3 \end{array}\right) + s*
+\left(\begin{array}{c} t_1 \\ t_2 \\ t_3 \end{array}\right)$\newline\newline
+\begin{doublespace}
+    $(v_1 + st_1)n_1 + (v_2 + st_2)n_2 + (v_3 + st_3)n_3 = o_1n_1 + o_2n_2 + o_3n_3$\newline
+    $\Leftrightarrow v_1n_1 + t_1n_1s + v_2n_2 + t_2n_2s + v_3n_3 + t_3n_3s =o_1n_1 + o_2n_2 + o_3n_3$\newline
+    $\Leftrightarrow (t_1n_1 + t_2n_2 + t_3n_3)s =  o_1n_1 - v_1n_1 + o_2n_2 - v_2n_2 + o_3n_3 - v_3n_3$\newline
+    $\Leftrightarrow s =$ {\Large$\frac{n_1(o_1 - v_1) + n_2(o_2 - v_2) + n_3(o_3 - v_3)}{t_1n_1 + t_2n_2 + t_3n_3}$}
+\end{doublespace}
+\section*{Dreiecksgleichung}
+$\overrightarrow{a} = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3\end{array}\right) \overrightarrow{b} = \left(\begin{array}{c} b_1 \\ b_2 \\ b_3\end{array}\right) \overrightarrow{c} = \left(\begin{array}{c} c_1 \\ c_2 \\ c_3\end{array}\right) $\\ \\
+$E: e= \left(\begin{array}{c} a_1 \\ a_2 \\ a_3\end{array}\right) + s*\left(\begin{array}{c} b_1 - a_1 \\ b_2 - a_2 \\ b_3 - a_3\end{array}\right) + t*\left(\begin{array}{c} c_1 - a_1 \\ c_2 - a_2 \\ c_3 - a_3\end{array}\right)$\\ \\
+$P \in Dreieck \Leftrightarrow \overrightarrow{p} \in E \wedge 0\leq s \leq 1 \wedge 0\leq t \leq 1\wedge 0\leq s+t \leq 1$\\
+
+\end{document}
+
+
+%%% Ende
