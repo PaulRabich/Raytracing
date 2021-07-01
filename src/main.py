@@ -8,13 +8,13 @@ from numpy import linalg as la
 
 x = 1000
 y = 800
-s = Sphere(np.array([800, 0, 0]), 300, np.array([255, 255, 255]))
+s1 = Sphere(np.array([800, 0, 0]), 300, np.array([255, 0, 255]))
 
-shperes = [s,]
+shperes = [s1,]
 
 l0 = Light(np.array([300, 350, 250]), np.array([255, 255, 255]), 1000)
 l = [l0,]
-m = Model(400, shperes, l, x, y)
+m = Model(500, shperes, l, x, y)
 r = m.calculatePoints()
 print(len(r))
 
