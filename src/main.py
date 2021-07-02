@@ -1,11 +1,12 @@
 from view.picture import Picture
 from world.lights import Light
 from world.model import Model
+from world.models import Cube
 from world.shapes import *
 from util.my_math import *
 import numpy as np
 from numpy import linalg as la
-
+"""
 x = 1000
 y = 800
 s1 = Sphere(np.array([800, 0, 0]), 300, np.array([255, 0, 255]))
@@ -27,9 +28,5 @@ p.showPicture()
 p.save()
 
 """
-t = Triangle(np.array([0, 0, 0]), np.array([10, 0, 0]), np.array([0, 10, 0]))
-l = Line(np.array([0, 0, 0]), np.array([1, 0, 0]))
-print(t.pointOfIntersection(l))
-
-#p.pointOfInersection(l).print()
-"""
+c = Cube()
+c.getTriangles()

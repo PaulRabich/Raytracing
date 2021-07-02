@@ -60,3 +60,22 @@ class Sphere(Shape) :
     def isInSphere(self, vec:np.array):
         a = self.origin.add(vec.invert())
         return True if(a.length() <= self.radius) else False
+
+class TriangleObject(Shape):
+
+    def __init__(self, triangles, color):
+        self.color = color
+        self.triagles = triangles
+
+    def pointOfIntersection(self, line:Line):
+        res = None
+        for t in self.triagles:
+            i = t.pointOfIntersection(line)
+            if(i[0] == -np.inf):
+                continue
+            else:
+                if(res == None):
+                    res = i
+                elif(la.norm(res) > la.norm(i)):
+                    res = i
+        return res
