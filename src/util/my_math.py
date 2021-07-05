@@ -35,5 +35,29 @@ class Triangle:
             return np.array([-np.inf, -np.inf, -np.inf])
         else:
             return line.insert(solution[2])
-        
 
+    def move(self, vec):
+        print(self.a)
+        print(vec)
+        print(self.a + vec)
+        print("=========")
+        self.a = self.a + vec
+        
+        self.b = self.b + vec
+        self.c = self.c + vec
+        self.renewVectors()
+
+    def scale(self, x):
+        print(self.a)
+        print(x)
+        print(self.a * x)
+        print("=========")
+        self.a = self.a * x
+        self.b = self.b * x
+        self.c = self.c * x
+        self.renewVectors()
+        
+    def renewVectors(self):
+        self.b = self.b - self.a
+        self.c = self.c - self.a
+        self.cross = np.cross(self.b, self.c)

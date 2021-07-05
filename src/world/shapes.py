@@ -68,14 +68,31 @@ class TriangleObject(Shape):
         self.triagles = triangles
 
     def pointOfIntersection(self, line:Line):
-        res = None
+        res0 = np.array([-np.inf, -np.inf, -np.inf])
+        res1 = np.array([-np.inf, -np.inf, -np.inf])
         for t in self.triagles:
             i = t.pointOfIntersection(line)
             if(i[0] == -np.inf):
                 continue
             else:
-                if(res == None):
-                    res = i
-                elif(la.norm(res) > la.norm(i)):
-                    res = i
-        return res
+                if(res0 [0] == -np.inf):
+                    res0 = i
+                else:
+                    res1 = i
+        return np.array([res0, res1]) if(res0[0] == -np.inf) else np.array([-np.inf, -np.inf, -np.inf])
+
+    def move(self, vec):
+        for t in self.triagles:
+            t.move(vec)
+
+    def scale(self, x):
+        for t in self.triagles:
+            t.scale(x)
+
+    def getColorFactor(self, vec:np.array, light:Light):
+
+        return 1
+
+    def getColor(self, c:float):
+        #print(c, self.color)
+        return np.array([0, 0, 0])

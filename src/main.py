@@ -6,10 +6,13 @@ from world.shapes import *
 from util.my_math import *
 import numpy as np
 from numpy import linalg as la
-"""
+
 x = 1000
 y = 800
-s1 = Sphere(np.array([800, 0, 0]), 300, np.array([255, 0, 255]))
+s1 = Sphere(np.array([700, 0, 0]), 300, np.array([255, 0, 255]))
+#c = TriangleObject(Cube().getTriangles(), np.array([255, 255, 255]))
+#c.scale(200)
+#c.move(np.array([800, 0, 0]))
 
 shperes = [s1,]
 
@@ -28,5 +31,11 @@ p.showPicture()
 p.save()
 
 """
-c = Cube()
-c.getTriangles()
+c = TriangleObject(Cube().getTriangles(), np.array([255, 255, 255]))
+c.scale(200)
+c.move(np.array([800, 0, 0]))
+
+
+print(c.pointOfIntersection(Line(np.array([0, 0, 0]),np.array([1, 0, 0]))))
+
+"""
