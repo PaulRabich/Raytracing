@@ -10,9 +10,8 @@ class Picture:
         self.draw = ImageDraw.Draw(self.image)
 
 
-    def drawPixel(self, x:int, y:int, color = 0):
+    def drawPixel(self, x:int, y:int, color):
         #print(x, y, color)
-        color = (int(color[0]), int(color[1]), int(color[2]))
         self.draw.point((int(x), int(y)), fill = color)
 
     def showPicture(self):

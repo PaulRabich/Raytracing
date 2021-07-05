@@ -1,8 +1,10 @@
 import math
 import numpy as np
-from util.my_math import Line
+from util.my_math import Line, Triangle
 from world.lights import Light
 from numpy import linalg as la
+
+from world.models import generateTriangles
 
 class Shape:
     def __init__(self, origin, color ):
@@ -54,7 +56,7 @@ class Sphere(Shape) :
 
     def getColor(self, c:float):
         #print(c, self.color)
-        return (int(self.color[0] * c[0]), int(self.color[1] * c[1]), int(self.color[2] * c[2]))
+        return np.array([int(self.color[0] * c[0]), int(self.color[1] * c[1]), int(self.color[2] * c[2])])
 
     #Vector
     def isInSphere(self, vec:np.array):
@@ -63,9 +65,10 @@ class Sphere(Shape) :
 
 class TriangleObject(Shape):
 
-    def __init__(self, triangles, color):
+    def __init__(self, name,  color):
         self.color = color
-        self.triagles = triangles
+        
+        #self.triagles = triagles
 
     def pointOfIntersection(self, line:Line):
         res0 = np.array([-np.inf, -np.inf, -np.inf])
@@ -95,4 +98,25 @@ class TriangleObject(Shape):
 
     def getColor(self, c:float):
         #print(c, self.color)
-        return np.array([0, 0, 0])
+        return np.array([0, 0, 0])#
+
+    def generateTriangles(filename):
+        f = open("src\models\\" + filename, 'r')
+        points = []
+        triangles = []
+        for line in f:
+            if(line[0] == "#"):
+                continue
+            elif(line[0] == "v"):
+                line = line[2:]
+                print(line)
+                n = line.split(" ")
+                points.append(np.array([n[0], n[1], n[2]], dtype="float64"))
+            elif(line[0] == "f"):
+                line = line[2:]
+                print(line)
+                n = line.split(" ")
+                triangles.append(Triangle(points[int(n[0]) - 1], points[int(n[1]) - 1], points[int(n[2]) - 1]))
+
+        f.close()
+        return triangles
