@@ -9,10 +9,9 @@ from numpy import linalg as la
 
 x = 1000
 y = 800
-s1 = Sphere(np.array([700, 0, 0]), 300, np.array([255, 0, 255]))
-#c = TriangleObject(Cube().getTriangles(), np.array([255, 255, 255]))
-#c.scale(200)
-#c.move(np.array([800, 0, 0]))
+s1 = Sphere(np.array([700, 0, 0]), 300, np.array([0, 0, 255]))
+
+#mehr kommentare hier zum testen
 
 shperes = [s1,]
 
