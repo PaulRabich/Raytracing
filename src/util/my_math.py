@@ -1,6 +1,11 @@
 import math
 import numpy as np
 from numpy import linalg as la
+from numba import jit
+"""
+Vektor = np.array([x, y, z])
+Line = np.array(np.array([x, y, z]), np.array([a, b, c])), x, y, z Ortsvektoren; a, b, c Richtungsvektor
+"""
 
 class Line:
     def __init__(self, origin:np.array, direction:np.array):

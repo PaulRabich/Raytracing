@@ -1,20 +1,11 @@
+from util.my_math import Triangle
 import numpy as np
 
-from util.my_math import Triangle
-class Cube:
-
-    def __init__(self):
-        self.triangles = None
-
-    def getTriangles(self):
-        if(self.triangles == None):
-            self.triangles = generateTriangles("Cube.obj")
-        
-        return self.triangles
 
 
-def generateTriangles( filename):
-        f = open("src\models\\" + filename, 'r')
+
+def generateTriangles(filename):
+    with open("src\models\\" + filename, 'r') as f:
         points = []
         triangles = []
         for line in f:
@@ -31,6 +22,4 @@ def generateTriangles( filename):
                 n = line.split(" ")
                 triangles.append(Triangle(points[int(n[0]) - 1], points[int(n[1]) - 1], points[int(n[2]) - 1]))
 
-        f.close()
-        return triangles
-
+    return triangles

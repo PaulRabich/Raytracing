@@ -1,6 +1,5 @@
-from pathlib import Path
 from PIL import Image, ImageDraw
-
+from datetime import *
 
 class Picture:
     def __init__(self, x= 500, y= 300):
@@ -14,8 +13,14 @@ class Picture:
         #print(x, y, color)
         self.draw.point((int(x), int(y)), fill = color)
 
+
     def showPicture(self):
         self.image.show()
 
+
     def save(self):
-        self.image.save("picture.jpg")
+        now = datetime.now()
+        filename = "picture_" + now.strftime('%Y-%m-%d_%H-%M-%S') + ".jpg"
+        path = "output\\" + filename
+        print(filename)
+        self.image.save(path)
